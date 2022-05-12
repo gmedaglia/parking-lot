@@ -31,12 +31,12 @@ class ParkingSlot
         return $ret;
     }
 
-    private function vehicleFitsHeight(Vehicle $vehicle)
+    private function vehicleFitsHeight(Vehicle $vehicle): bool
     {
         return $this->floor->height >= $vehicle->getAvgHeight();
     }
 
-    private function vehicleFitsWidth(Vehicle $vehicle)
+    private function vehicleFitsWidth(Vehicle $vehicle): bool
     {
         $occupiedSize = $this->getOccupiedSize();
         $size = $vehicle->getSize();
