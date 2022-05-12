@@ -16,20 +16,30 @@ class ParkingSlot
         $this->vehicles[] = $vehicle;
     }
 
-    public function getOccupiedSize(): int
+    public function isAvailable(Vehicle $vehicle): bool
     {
-        $ret = 0;
+        return $this->vehicleFitsHeight($vehicle)
+            && $this->vehicleFitsWidth($vehicle);
+    }
+
+    private function getOccupiedSize(): float
+    {
+        $ret = (float) 0;
         foreach ($this->vehicles as $vehicle) {
-            var_dump($ret, $vehicle->getSize(), $ret + $vehicle->getSize());
             $ret = $ret + $vehicle->getSize();
         };
         return $ret;
     }
 
-    public function isAvailable(Vehicle $vehicle): bool
+    private function vehicleFitsHeight(Vehicle $vehicle)
     {
-        return empty($this->vehicle)
-            && $this->floor->height >= $vehicle->getAvgHeight()
-            && ($this->getOccupiedSize() + $vehicle->getSize()) <= 1;
+        return $this->floor->height >= $vehicle->getAvgHeight();
+    }
+
+    private function vehicleFitsWidth(Vehicle $vehicle)
+    {
+        $occupiedSize = $this->getOccupiedSize();
+        $size = $vehicle->getSize();
+        return ($occupiedSize + $size) <= 1;
     }
 }
