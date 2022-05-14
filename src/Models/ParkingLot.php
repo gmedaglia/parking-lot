@@ -15,6 +15,9 @@ class ParkingLot
     public function parkVehicle(Vehicle $vehicle): ParkingSlot
     {
         foreach ($this->floors as $floor) {
+            if (!$floor->vehicleFitsHeight($vehicle)) {
+                continue;
+            }
             foreach ($floor->slots as $slot) {
                 if ($slot->isAvailable($vehicle)) {
                     $slot->parkVehicle($vehicle);

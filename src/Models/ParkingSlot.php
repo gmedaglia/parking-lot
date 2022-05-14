@@ -18,8 +18,7 @@ class ParkingSlot
 
     public function isAvailable(Vehicle $vehicle): bool
     {
-        return $this->vehicleFitsHeight($vehicle)
-            && $this->vehicleFitsWidth($vehicle);
+        return $this->vehicleFitsWidth($vehicle);
     }
 
     private function getOccupiedSize(): float
@@ -29,11 +28,6 @@ class ParkingSlot
             $ret = $ret + $vehicle->getSize();
         };
         return $ret;
-    }
-
-    private function vehicleFitsHeight(Vehicle $vehicle): bool
-    {
-        return $this->floor->height >= $vehicle->getAvgHeight();
     }
 
     private function vehicleFitsWidth(Vehicle $vehicle): bool

@@ -2,13 +2,9 @@
 
 namespace Models;
 
-abstract class Vehicle
+interface Vehicle
 {
-    public function __construct()
-    {
-    }
-
-    abstract function getType(): string;
-    abstract function getAvgHeight(): int;
-    abstract function getSize(): float;
+    public function getType(): string;
+    public function getAvgHeight(): int;
+    public function getSize(): float;
 }

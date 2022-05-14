@@ -25,4 +25,9 @@ class ParkingFloor
     {
         return $this->number;
     }
+
+    public function vehicleFitsHeight(Vehicle $vehicle): bool
+    {
+        return $this->height >= $vehicle->getAvgHeight();
+    }
 }

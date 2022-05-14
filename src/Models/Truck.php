@@ -2,19 +2,19 @@
 
 namespace Models;
 
-class Truck extends Vehicle
+class Truck implements Vehicle
 {
-    function getType(): string
+    public function getType(): string
     {
         return 'Truck';
     }
 
-    function getAvgHeight(): int
+    public function getAvgHeight(): int
     {
         return 15;
     }
 
-    function getSize(): float
+    public function getSize(): float
     {
         return 1;
     }

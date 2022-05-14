@@ -2,19 +2,19 @@
 
 namespace Models;
 
-class Motorcycle extends Vehicle
+class Motorcycle implements Vehicle
 {
-    function getType(): string
+    public function getType(): string
     {
         return 'Motorcycle';
     }
 
-    function getAvgHeight(): int
+    public function getAvgHeight(): int
     {
         return 8;
     }
 
-    function getSize(): float
+    public function getSize(): float
     {
         return 0.5;
     }
