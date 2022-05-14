@@ -9,11 +9,7 @@ class ParkingLot
     /** @var ParkingFloor[] $floors */
     public function __construct(private array $floors)
     {
-    }
-
-    public function getFloor(int $floor): ParkingFloor
-    {
-        return $this->floors[$floor - 1];
+        $this->assignFloorNumbers();
     }
 
     public function parkVehicle(Vehicle $vehicle): ParkingSlot
@@ -41,5 +37,12 @@ class ParkingLot
         }
 
         return $str;
+    }
+
+    private function assignFloorNumbers()
+    {
+        foreach ($this->floors as $index => $floor) {
+            $floor->setNumber($index + 1);
+        }
     }
 }

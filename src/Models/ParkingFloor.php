@@ -4,13 +4,25 @@ namespace Models;
 
 class ParkingFloor
 {
+    private int $number;
+
     /** @var ParkingSlot[]  */
     public array $slots = [];
 
-    public function __construct(public int $number, int $slotCount, public int $height)
+    public function __construct(int $slotCount, public int $height)
     {
         for ($i = 1; $i <= $slotCount; $i++) {
             array_push($this->slots, new ParkingSlot($this, $i));
         }
+    }
+
+    public function setNumber(int $number)
+    {
+        $this->number = $number;
+    }
+
+    public function getNumber(): int
+    {
+        return $this->number;
     }
 }
