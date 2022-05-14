@@ -6,8 +6,10 @@ use Exceptions\NoSlotAvailableException;
 
 class ParkingLot
 {
-    /** @var ParkingFloor[]  */
-    public array $floors = [];
+    /** @var ParkingFloor[] $floors */
+    public function __construct(private array $floors)
+    {
+    }
 
     public function getFloor(int $floor): ParkingFloor
     {

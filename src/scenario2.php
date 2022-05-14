@@ -9,10 +9,10 @@ use Models\ParkingFloor;
 use Models\ParkingLot;
 use Models\Truck;
 
-$parkingLot = new ParkingLot;
-
-array_push($parkingLot->floors, new ParkingFloor(1, 10, 15));
-array_push($parkingLot->floors, new ParkingFloor(2, 10, 10));
+$parkingLot = new ParkingLot([
+    new ParkingFloor(1, 10, 15),
+    new ParkingFloor(2, 10, 10),
+]);
 
 for ($i = 1; $i <= 7; $i++) {
     $motorcycle = new Motorcycle;
